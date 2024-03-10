@@ -20,9 +20,19 @@ completion = client.chat.completions.create(
     },
   ],
   # temperature=0  # 0 pour des réponses avec une variabilité la plus faible possible, valeur possible 0~2
+  # seed=1024  # seed pour la génération de texte, pour obtenir des réponses reproductibles
   # max_tokens=150  # nombre maximum de tokens dans la réponse
   # n=1  # nombre de réponses à générer pour chaque message
   # stop=["\n"]  # caractère de fin de la réponse
+  # tools=[]  # une list d'objet qui représentent les outils à utiliser, un objet comprend deux champs dedans :
+  #                                                    type (maintenant seulement 'function'),
+  #                                                    function (une fonction à utiliser)
+  # tool_choice="none"  # choix de l'outil, 'none' : on va pas utiliser d'outil, 'auto' : on va laisser OpenAI choisir,
+  #          objet {"type": "function", "function": {"name": "my_function"}}: forcer l'utilisation d'un function calling
+  # none est le choix par défaut quand aucune fonction n'est présente. auto est le choix par défaut si des fonctions
+  # sont présentes.
+
+  # pour plus de détails sur les paramètres, voir https://platform.openai.com/docs/api-reference/chat/create
 )
 
 print(completion.choices[0].message.content)
