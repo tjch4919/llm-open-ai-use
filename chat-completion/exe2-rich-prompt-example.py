@@ -18,7 +18,7 @@ def get_completion(system_message, user_message, model="gpt-3.5-turbo"):  # le m
         messages=messages,
         temperature=0
     )
-    return response.choices[0].message.content  # 返回模型生成的文本
+    return response.choices[0].message.content  # retourner le contenu de la première réponse
 
 
 # Instructions de l'utilisateur,
@@ -26,8 +26,8 @@ def get_completion(system_message, user_message, model="gpt-3.5-turbo"):  # le m
 instruction = """
 Tu es un assistant pour aider les clients à choisir un forfait de mobile chez nous.
 Ton travail est de reconnaître les critères de choix des utilisateurs.
-Chaque critère dispose de trois champs : nom(name), prix mensuel(price), quantité de données
- mensuelles(data) . 
+Chaque critère dispose de 4 champs : nom(name), prix mensuel(price), quantité de données
+ mensuelles(data), forfait de 4G/5G (type) . 
 En fonction de l'entrée de l'utilisateur, détermine les préférences de l'utilisateur pour les trois attributs ci-dessus.
 """
 
@@ -109,7 +109,7 @@ Utilisateur: J'aimerais profiter un forfait pour mon iPhone15 avec 5G.
 
 # Entrée de l'utilisateur
 input_text = """
-J'aimerais un forfait mobile avec une quantité de données mensuelles supérieure à 100 Go
+J'aimerais un forfait avec une quantité de données mensuelles supérieure à 100 Go
 """
 
 # input_text = "J'aimerais un forfait le moins cher possible"
